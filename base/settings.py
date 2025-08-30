@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myshopifyapp',
+    'tailwind',
+    'shopifystore',
 
 ]
 
@@ -124,15 +127,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+TAILWIND_APP_NAME = 'shopifystore'
 
 # Load .env file
 load_dotenv()
-
+# SHOPIFY_API_KEY = "7d1fa30e3389d1e2c755fc203a317c5e"
+# SHOPIFY_API_SECRET = "c64db6068b294be593383372ff2146ce"
+# SHOPIFY_ACCESS_TOKEN = "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"
+# SHOPIFY_STORE_DOMAIN = "mydjangoapp.myshopify.com"
+# SHOPIFY_API_VERSION = "2024-04"
+#https://django-tailwind.readthedocs.io/en/latest/installation.html#step-by-step-instructions
 SHOPIFY_API_KEY = os.getenv("SHOPIFY_API_KEY")
 SHOPIFY_API_SECRET = os.getenv("SHOPIFY_API_SECRET")
-SHOPIFY_ACCESS_TOKEN = os.getenv("SHOPIFY_ACCESS_TOKEN")
-SHOPIFY_STORE_DOMAIN = os.getenv("SHOPIFY_STORE_DOMAIN")
+SHOPIFY_ACCESS_TOKEN='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'
+SHOPIFY_STORE_DOMAIN='mydjangoapp.myshopify.com'
 SHOPIFY_API_VERSION = os.getenv("SHOPIFY_API_VERSION", "2024-04")  # default if not set
 
 

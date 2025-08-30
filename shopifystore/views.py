@@ -2,7 +2,7 @@ from django.conf import settings
 import shopify
 from django.http import JsonResponse
 from django.shortcuts import render
-from .shopify_utils import get_shopify_session
+from myshopifyapp.shopify_utils import get_shopify_session
 
 # def product_list(request):
 #     #products = request.shopify.Products().get()
@@ -30,4 +30,4 @@ def product_list(request):
         shopify.ShopifyResource.clear_session()
 
 
-    return render(request, "myshopifyapp/productlist.html", {"products": products})
+    return render(request, "shopifystore/base.html", {"products": products})
